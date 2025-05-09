@@ -9,8 +9,8 @@ public class Video implements ElementoMultimediale, Riproducibile {
     public Video(String titolo, int durata, int volume, int luminosita) {
         this.titolo = titolo;
         this.durata = durata;
-        this.volume = volume;
-        this.luminosita = luminosita;
+        this.volume = Math.min(volume, 100);
+        this.luminosita = Math.min(luminosita, 100);
     }
 
     public String getTitolo() {
@@ -45,10 +45,13 @@ public class Video implements ElementoMultimediale, Riproducibile {
         this.luminosita = luminosita;
     }
 
-    public void aumentaLuminosita() {
-        luminosita++;
+    public void alzaVolume() {
+        if (volume < 100) volume++;
     }
 
+    public void aumentaLuminosita() {
+        if (luminosita < 100) luminosita++;
+    }
 
     public void diminuisciLuminosita() {
         if (luminosita > 0) {

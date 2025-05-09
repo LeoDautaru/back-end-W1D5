@@ -8,8 +8,14 @@ public class LettoreMultimediale {
         ElementoMultimediale[] elementi = new ElementoMultimediale[5];
 
         for (int i = 0; i < 5; i++) {
-            System.out.println("Inserisci tipo di elemento (1 = Immagine, 2 = Audio, 3 = Video): ");
-            int tipo = scanner.nextInt();
+            int tipo;
+            do {
+                System.out.println("Inserisci tipo di elemento (1 = Immagine, 2 = Audio, 3 = Video): ");
+                tipo = scanner.nextInt();
+                if (tipo < 1 || tipo > 3) {
+                    System.out.println("Tipo non valido. Riprova.");
+                }
+            } while (tipo < 1 || tipo > 3);
             scanner.nextLine();
 
             System.out.println("Inserisci il titolo:");
@@ -18,26 +24,52 @@ public class LettoreMultimediale {
             switch (tipo) {
                 case 1:
                     System.out.println("Inserisci la luminosità:");
-                    int luminosita = scanner.nextInt();
-                    scanner.nextLine();
+                    int luminosita;
+                    do {
+                        System.out.println("Inserisci la luminosità (0-100):");
+                        luminosita = scanner.nextInt();
+                        if (luminosita < 0 || luminosita > 100) {
+                            System.out.println("Valore non valido. Riprova.");
+                        }
+                    } while (luminosita < 0 || luminosita > 100);
                     elementi[i] = new Immagine(titolo, luminosita);
                     break;
                 case 2:
                     System.out.println("Inserisci la durata:");
                     int durataAudio = scanner.nextInt();
                     System.out.println("Inserisci il volume:");
-                    int volumeAudio = scanner.nextInt();
-                    scanner.nextLine();
+                    int volumeAudio;
+                    do {
+                        System.out.println("Inserisci il volume (0-100):");
+                        volumeAudio = scanner.nextInt();
+                        if (volumeAudio < 0 || volumeAudio > 100) {
+                            System.out.println("Valore non valido. Riprova.");
+                        }
+                    } while (volumeAudio < 0 || volumeAudio > 100);
+
                     elementi[i] = new RegistrazioneAudio(titolo, durataAudio, volumeAudio);
                     break;
                 case 3:
                     System.out.println("Inserisci la durata:");
                     int durataVideo = scanner.nextInt();
                     System.out.println("Inserisci il volume:");
-                    int volumeVideo = scanner.nextInt();
-                    System.out.println("Inserisci la luminosità:");
-                    int luminositaVideo = scanner.nextInt();
-                    scanner.nextLine();
+                    int volumeVideo;
+                    do {
+                        System.out.println("Inserisci il volume (0-100):");
+                        volumeVideo = scanner.nextInt();
+                        if (volumeVideo < 0 || volumeVideo > 100) {
+                            System.out.println("Valore non valido. Riprova.");
+                        }
+                    } while (volumeVideo < 0 || volumeVideo > 100);
+
+                    int luminositaVideo;
+                    do {
+                        System.out.println("Inserisci la luminosità (0-100):");
+                        luminositaVideo = scanner.nextInt();
+                        if (luminositaVideo < 0 || luminositaVideo > 100) {
+                            System.out.println("Valore non valido. Riprova.");
+                        }
+                    } while (luminositaVideo < 0 || luminositaVideo > 100);
                     elementi[i] = new Video(titolo, durataVideo, volumeVideo, luminositaVideo);
                     break;
                 default:

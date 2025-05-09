@@ -6,8 +6,9 @@ public class Immagine  implements ElementoMultimediale {
 
     public Immagine(String titolo, int luminosita) {
         this.titolo = titolo;
-        this.luminosita = luminosita;
+        this.luminosita = Math.min(luminosita, 100);
     }
+
 
     public String getTitolo() {
         return titolo;
@@ -23,6 +24,10 @@ public class Immagine  implements ElementoMultimediale {
 
     public void setLuminosita(int luminosita) {
         this.luminosita = luminosita;
+    }
+
+    public void aumentaLuminosita() {
+        if (luminosita < 100) luminosita++;
     }
 
     public void diminuisciLuminosita() {

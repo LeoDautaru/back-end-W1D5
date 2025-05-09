@@ -9,7 +9,7 @@ public class RegistrazioneAudio implements ElementoMultimediale, Riproducibile {
     public RegistrazioneAudio(String titolo, int durata, int volume) {
         this.titolo = titolo;
         this.durata = durata;
-        this.volume = volume;
+        this.volume = Math.min(volume, 100);
     }
 
     public String getTitolo() {
@@ -44,7 +44,7 @@ public class RegistrazioneAudio implements ElementoMultimediale, Riproducibile {
 
 
     public void alzaVolume() {
-        volume++;
+        if (volume < 100) volume++;
     }
 
     @Override
